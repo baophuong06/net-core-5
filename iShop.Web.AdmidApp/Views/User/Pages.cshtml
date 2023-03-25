@@ -1,0 +1,78 @@
+﻿@using iShop.Web.ViewModel.Common;
+@model PageList<iShop.Web.ViewModel.System.UserViewModel>
+@{
+    ViewData["Title"] = "Pages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pages</h1>
+<div class="card mb-12">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <a class="btn btn-success" asp-action="Create" asp-controller="User">Tao moi</a>
+            </div>
+
+            <div class="col-md-6 col-xs-12">
+                <form method="get" asp-action="Index" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input type="text" name="keyword" class="form-control" />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Tim</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Name</th>
+            <th>Dob</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Dob)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@*@{
+    var prevDisabled = !Model.HasPrevious ? "disabled" : "";
+    var nextDisabled = !Model.HasNext ? "disabled" : "";
+}
+
+<a asp-action="Pages"
+  
+   asp-route-pageIndex="@(Model.PageIndex - 1)"
+  
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Pages"
+   
+   asp-route-pageIndex="@(Model.PageIndex + 1)"
+   
+   class="btn btn-default @nextDisabled">
+    Next
+</a>*@
+<ul>
+
+</ul>

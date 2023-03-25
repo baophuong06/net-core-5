@@ -1,0 +1,67 @@
+﻿@model IEnumerable<iShop.Web.ViewModel.Catalog.Category.CategoryDisplayVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+@*<form method="get" asp-action="Index" asp-controller="Category">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </div>
+
+        <div class="col-md-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </div>
+
+        <div class="col-md-2">
+            <select name="languageId" class="form-control" onchange="" asp-items="@ViewBag.Categories">
+                <option value="">--Select--</option>
+            </select>
+        </div>
+    </div>
+</form>*@
+<p>
+    <a asp-action="Create" asp-controller="Category">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelectedLanguageId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SelectedLanguageId)
+            </td>
+            <td>
+                <select name="categoryName" class="form-control" onchange=""  asp-items="@ViewBag.Categories">
+                    <option value="">--Select--</option>
+                </select>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
